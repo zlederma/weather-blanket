@@ -3,6 +3,8 @@ import SearchBar from "./components/SearchBar";
 import { useState } from "react";
 
 function App() {
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState({});
 
   const workingFetchURL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/87547?unitGroup=us&key=X93H4RMABUUQCNAQP89ANS87T';
   const testBasicFetchURL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Springfield,IL?unitGroup=us&key=DHBS12DVFHFFSHF764DGDBC'
@@ -17,10 +19,23 @@ function App() {
   };
 
   const fetchBuilder = (queryName) =>{
-    return `${api.base}${queryName}/${api.dynamic_period}?unitGroup=us&key=${api.key}${api.include}`
+    return `${api.base}${query}/${api.dynamic_period}?unitGroup=us&key=${api.key}${api.include}`
   }
 
-  //fetchBuilder("London,UK")
+  const search = evt => {
+    if (evt.key === "Enter") {
+      fetch(`${api.base}${query}/${api.dynamic_period}?unitGroup=us&key=${api.key}${api.include}`)
+        .then(res => res.json())
+        .then(result => {
+          setWeather(result);
+          setQuery('');
+          console.log(result);
+          console.log(query);
+        });
+    }
+  }
+
+  //fetchBuilder(query)
 
   // fetch(fetchBuilder("London,UK"))
   //   .then((response) => response.json())
@@ -28,7 +43,11 @@ function App() {
   
   return(
     <>
-    <SearchBar></SearchBar>
+    <SearchBar
+      query = {query}
+      updateQuery = {e => setQuery(e.target.value)}
+      search = {search}>
+    </SearchBar>
     <SingleBar
       temperature = {90}> </SingleBar>
     </>
