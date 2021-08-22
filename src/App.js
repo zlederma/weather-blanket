@@ -1,5 +1,6 @@
 import SingleBar from "./components/SingleBar";
 import SearchBar from "./components/SearchBar";
+import AllBars from "./components/AllBars";
 import { useState } from "react";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     include: "&include=obs%days&elements=datetime,tempmax,tempmin,temp",
   };
 
-  const fetchBuilder = (queryName) =>{
+  const fetchBuilder = (queryName) => {
     return `${api.base}${query}/${api.dynamic_period}?unitGroup=us&key=${api.key}${api.include}`
   }
 
@@ -35,23 +36,31 @@ function App() {
     }
   }
 
-  //fetchBuilder(query)
-
-  // fetch(fetchBuilder("London,UK"))
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data));
-  
-  return(
+  return (
     <>
-    <SearchBar
-      query = {query}
-      updateQuery = {e => setQuery(e.target.value)}
-      search = {search}>
-    </SearchBar>
-    <SingleBar
-      temperature = {90}> </SingleBar>
+      <SearchBar
+        query={query}
+        updateQuery={e => setQuery(e.target.value)}
+        search={search} />
+
+      {(typeof weather.address != "undefined") ? (
+
+
+        <div className="barContainer">
+          {weather.days.map((day, key) => {
+            return (
+              < SingleBar
+                day={day}
+                key={key} />
+            );
+          })}
+
+        </div >
+      ) : ('')}
+
     </>
-  ) 
+
+  );
 }
 
 export default App;
