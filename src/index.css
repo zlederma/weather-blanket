@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EEEEEE;
 }
 
 code {
@@ -12,15 +13,130 @@ code {
     monospace;
 }
 
+.header>img {
+  width: 2000px;
+  height: 125px;
+  overflow: hidden;
+}
+
+.body_container {
+  max-width: 1100px;
+  margin: auto;
+}
+
 .bar {
   height: 10px;
   font-size: 0px;
   /* border: .5px solid white; */
   box-shadow: 0 0 3px #ccc;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+}
+
+.bar_container {
+  border-radius: 20px;
+  position: static;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 3px #ccc;
+  float: right;
+
+  width: 70%;
+  /* height: 70vh;
+  overflow: scroll; */
+  top: 20 px;
 }
 
 .bar:hover {
   font-size: 20px;
   height: 45px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+
+/* .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+} */
+
+
+.left_container {
+  float: left;
+  width: 30%;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.search_container {
+  position: sticky;
+  border: 2px solid green;
+  margin-top: 40px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.search_bar {
+  border-radius: 15px;
+  width: 400px;
+  height: 40px;
+  border: none;
+  box-shadow: 2px 2px 4px grey;
+}
+
+.search_bar:hover {
+  border: 1px solid black;
+}
+
+.info_container {
+  top: 100px;
+}
+
+.location {
+  font-size: 6vw;
+  /* font-size: 2em; */
+  font-weight: 900;
+  font-family: 'Anton';
+  text-align: center;
+
+}
+
+.temp_stats>h1 {
+  font-family: 'Roboto';
+  font-size: 2.5vw;
+  text-align: center;
+}
+
+.temp_stats>h2 {
+  font-family: 'Arial';
+  font-weight: 300;
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+.temp_stats>p {
+  font-family: 'Roboto';
+  font-size: 5vw;
+  text-align: center;
+  text-shadow: 2px 2px 4px grey;
+  line-height: 0em;
+  margin-top: 40px;
+  margin-bottom: 60px;
 }
