@@ -1,9 +1,10 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SingleBar from "./components/SingleBar";
 import SearchBar from "./components/SearchBar";
 import AllBars from "./components/AllBars";
 import { useState } from "react";
 import LeftInfoCard from "./components/LeftInfoCard";
-import header_img from "./assets/header.jpg";
+// import header_img from "./assets/header.jpg";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -38,49 +39,38 @@ function App() {
 
   return (
     <>
-      <div className="header">
-        <img src={header_img} alt="bohemian header" />
-        <div className="search_container">
-          <SearchBar
-            query={query}
-            updateQuery={e => setQuery(e.target.value)}
-            search={search} />
-        </div>
+      {/* <div className="header">
+        <img src={header_img} alt="bohemian header" /> */}
+      <div className="search_container">
+        <SearchBar
+          query={query}
+          updateQuery={e => setQuery(e.target.value)}
+          search={search} />
+        {/* </div> */}
       </div>
       <div className="body_container">
-        <div className="row">
-          <div className="column">
-            <div className="left_container">
+        <div className="left_container">
 
-              {(typeof weather.address != "undefined") ? (
-                <LeftInfoCard
-                  weather={weather} />
-              )
-                : ('')}
-            </div>
-          </div>
+          {(typeof weather.address != "undefined") ? (
+            <LeftInfoCard
+              weather={weather} />
+          )
+            : ('')}
 
-          <div className="column">
-
-            {(typeof weather.address != "undefined") ? (
-
-
-              <div className="bar_container">
-                {weather.days.slice().reverse().map((day, key) => {
-                  return (
-                    < SingleBar
-                      day={day}
-                      key={key} />
-                  );
-                })}
-
-              </div >
-
-            ) : ('')}
-
-          </div>
         </div>
+
+        {(typeof weather.address != "undefined") ? (
+
+
+          <div className="bar_container">
+
+            <AllBars
+              weather={weather} />
+          </div >
+
+        ) : ('')}
       </div>
+
     </>
   );
 }

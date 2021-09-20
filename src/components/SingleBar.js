@@ -111,7 +111,7 @@ const SingleBar = ({ day, key }) => {
             backgroundColor: divColorChooser(),
           }}
         >
-          {dateFormatter(day.datetime)}: {Math.round(day.tempmax)}
+          {dateFormatter(day.datetime)}: {Math.round(day.tempmax)}&#176;F
         </div>
       </>
     ) :
