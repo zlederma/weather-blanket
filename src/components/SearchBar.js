@@ -1,7 +1,7 @@
 import { Navbar } from "react-bootstrap";
 const SearchBar = ({ query, search, updateQuery }) => {
     return (
-        <Navbar className="justify-content-center" bg="dark" fixed="top" >
+        <Navbar className="justify-content-center mb_30" bg="dark" fixed="top" >
             <input
                 type="text"
                 className="search_bar"
