@@ -1,3 +1,5 @@
+This project allows the user to easily visualize the previous year of weather data for whichever location they are interested in looking at. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
