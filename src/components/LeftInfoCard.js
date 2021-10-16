@@ -109,18 +109,18 @@ const LeftInfoCard = ({ weather }) => {
                 {locationFormatter(weather.resolvedAddress)}
             </div>
             <div className="temp_stats">
+                <p style={{ color: colorChooser(avgTemp()), }}> {avgTemp()}&#176;F</p>
                 <h1> Average Temperature </h1>
                 <h2> {dateFormatter(weather.days[0].datetime)} through {dateFormatter(weather.days[weather.days.length - 1].datetime)}</h2>
-                <p style={{ color: colorChooser(avgTemp()), }}> {avgTemp()}&#176;F</p>
 
-                <h1> Highest Temperature </h1>
-                <h2> {dateFormatter(weather.days[highestTemp()].datetime)} </h2>
                 <p style={{ color: colorChooser(weather.days[highestTemp()].tempmax), }}>
                     {Math.round(weather.days[highestTemp()].tempmax)}&#176;F</p>
+                <h1> Highest Temperature </h1>
+                <h2> {dateFormatter(weather.days[highestTemp()].datetime)} </h2>
 
+                <p style={{ color: colorChooser(weather.days[lowestTemp()].tempmin), }}> {Math.round(weather.days[lowestTemp()].tempmin)}&#176;F</p>
                 <h1> Lowest Temperature </h1>
                 <h2> {dateFormatter(weather.days[lowestTemp()].datetime)} </h2>
-                <p style={{ color: colorChooser(weather.days[lowestTemp()].tempmin), }}> {Math.round(weather.days[lowestTemp()].tempmin)}&#176;F</p>
             </div>
         </div>
     )
